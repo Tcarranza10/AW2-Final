@@ -17,14 +17,14 @@ Crear una base de datos `abc`en pgAdmin.
 ### Con QueryTool
 
 ```sql
-CREATE TABLE productos (
-    id SERIAL PRIMARY KEY,
-    codigo VARCHAR(50) NOT NULL UNIQUE,
-    nombre VARCHAR(100) NOT NULL,
-    marca VARCHAR(50) NOT NULL,
-    stock INTEGER NOT NULL,
-    created_at TIMESTAMP DEFAULT NOW() NOT NULL
-);
+    CREATE TABLE productos (
+        id SERIAL PRIMARY KEY,
+        codigo VARCHAR(50) NOT NULL UNIQUE,
+        nombre VARCHAR(100) NOT NULL,
+        marca VARCHAR(50) NOT NULL,
+        stock INTEGER NOT NULL,
+        created_at TIMESTAMP DEFAULT NOW() NOT NULL
+    );
 
 ```
 
