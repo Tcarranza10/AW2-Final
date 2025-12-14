@@ -43,13 +43,12 @@ async function obtenerProveedor(req, res) {
 
 async function crearProveedor(req, res) {
     try {
-        const { nombre, contacto, telefono, email } = req.body;
-        if (!nombre || !contacto || !telefono || !email) {
+        const { nombre, telefono, email } = req.body;
+        if (!nombre || !telefono || !email) {
             return res.status(400).json({ mensaje: 'Datos incompletos', tipo: MENSAJES_TIPOS.ERROR });
         }
         const resultado = await modelo.crearProveedor({
             nombre: nombre.trim(),
-            contacto: contacto.trim(),
             telefono: telefono.trim(),
             email: email.trim(),
         });
@@ -64,14 +63,13 @@ async function crearProveedor(req, res) {
 async function modificarProveedor(req, res) {
     try {
         const { id } = req.params;
-        const { nombre, contacto, telefono, email } = req.body;
-        if (!id || !nombre || !contacto || !telefono || !email) {
+        const { nombre, telefono, email } = req.body;
+        if (!id || !nombre || !telefono || !email) {
             return res.status(400).json({ mensaje: 'Datos incompletos', tipo: MENSAJES_TIPOS.ERROR });
         }
         const resultado = await modelo.modificarProveedor({
             id,
             nombre: nombre.trim(),
-            contacto: contacto.trim(),
             telefono: telefono.trim(),
             email: email.trim(),
         });

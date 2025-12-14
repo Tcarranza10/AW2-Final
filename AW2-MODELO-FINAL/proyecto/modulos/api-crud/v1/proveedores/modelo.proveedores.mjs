@@ -29,16 +29,16 @@ async function obtenerProveedor(id) {
 
 async function crearProveedor(proveedor) {
     try {
-        const { nombre, contacto, telefono, email } = proveedor;
+        const { nombre, telefono, email } = proveedor;
         const resultado = await pool.query(
             `
             INSERT INTO proveedores
-                (nombre, contacto, telefono, email)
+                (nombre, telefono, email)
             VALUES
-                ($1,$2,$3,$4)
+                ($1,$2,$3)
             RETURNING id, nombre
         `,
-            [nombre, contacto, telefono, email]
+            [nombre, telefono, email]
         );
         return resultado;
     } catch (error) {
@@ -48,18 +48,17 @@ async function crearProveedor(proveedor) {
 
 async function modificarProveedor(proveedor) {
     try {
-        const { id, nombre, contacto, telefono, email } = proveedor;
+        const { id, nombre, telefono, email } = proveedor;
         const resultado = await pool.query(
             `UPDATE proveedores 
                 SET 
                     nombre=$1,
-                    contacto=$2,
-                    telefono=$3,
-                    email=$4 
-                    WHERE id=$5
+                    telefono=$2,
+                    email=$3 
+                    WHERE id=$4
                 RETURNING id, nombre
             `,
-            [nombre, contacto, telefono, email, id]
+            [nombre, telefono, email, id]
         );
         return resultado;
     } catch (error) {
